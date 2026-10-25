@@ -2,7 +2,13 @@
 name = "task-tracker-email-sender"
 version = "0.1.0"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "celery>=5.6.3",
+    "dishka>=1.10.1",
+    "fastapi>=0.162.0",
+    "pika>=1.4.4",
+    "uvicorn>=0.54.0",
+]
 
 [build-system]
 requires = ["uv_build>=0.11.19,<0.12"]
@@ -13,6 +19,7 @@ module-name = "email_sender"
 
 [dependency-groups]
 dev = [
+    "celery-types>=0.26.0",
     "mypy>=2.4.0",
     "pytest>=9.1.1",
     "ruff>=0.17.2",
