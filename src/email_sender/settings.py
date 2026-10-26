@@ -24,13 +24,13 @@ class RabbitmqSettings:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Settings:
-    app: AppSettings
+    # app: AppSettings
     smtp: SMTPSettings
 
 
 def load_settings() -> Settings:
     return Settings(
-        app=AppSettings(cors_origins=os.environ["CORS_ORIGINS"].split(",")),
+        # app=AppSettings(cors_origins=os.environ["CORS_ORIGINS"].split(",")),
         smtp=SMTPSettings(
             smtp_host=os.environ["SMTP_HOST"],
             smtp_port=int(os.environ["SMTP_PORT"]),

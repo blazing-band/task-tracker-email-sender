@@ -7,7 +7,7 @@ from dishka.integrations.celery import FromDishka, inject, setup_dishka
 from email_sender.ioc import get_sync_container
 from email_sender.services import EmailService
 
-broker_url = "amqp://rabbit:rabbit@localhost"
+broker_url = "amqp://rabbit:rabbit@localhost:5672"
 celery_app = Celery("tasks", broker=broker_url)
 celery_app.conf.control_queue_exclusive = True
 
@@ -26,5 +26,5 @@ def send_email(
     payload: dict[str, Any],
     email_service: FromDishka[EmailService],
 ) -> None:
-    # TODO get data from queue, form message and send email
-    pass
+    message = "SMTP test"
+    email_service.send_message(message=message, destination_email=payload["email"])
